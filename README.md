@@ -13,6 +13,102 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
 
+## 支持功能
+
+### 绘制相关
+
+#### AppBar 接口
+
+~~~
+@override
+AppBar fpAppBar(BuildContext context) {
+    return new AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: new GestureDetector(
+        onTap: () {
+            TuoRouter.sharedInstance().pop();
+        },
+        child: Image.asset('images/public_black_back_icon.png',
+        width: 30, height: 30)),
+        title: new Text('预约',
+        style: new TextStyle(
+        color: Color(0xff333333),
+        fontSize: 24,
+        fontWeight: FontWeight.bold)),
+        actions: <Widget>[
+            new Padding(
+                padding: new EdgeInsets.all(1),
+                child: new GestureDetector(
+                    child: Image.asset('images/practice_service_icon.png'),
+                ),
+            ),
+        ],
+    );
+}
+~~~
+
+#### body 接口
+
+~~~
+
+@override
+fpBody(BuildContext context) {
+    return _refresher.refreshWidget(ListView.builder(
+        itemCount: 10,
+        itemBuilder: (BuildContext context, int index) {
+            return new Container(
+                height: 50,
+                color: index % 2 == 0 ? Colors.red : Colors.green,
+            );
+        },
+    ));
+}
+
+~~~
+
+#### 设置页面状态
+
+~~~
+
+setStatus(FPWidgetStatus.loading);
+Future.delayed(Duration(seconds: 2), () {
+    setStatus(FPWidgetStatus.normal);
+});
+
+~~~
+
+#### empty 接口
+
+~~~
+Widget fpEmptyWidget(BuildContext context)
+~~~
+
+#### error 接口
+
+~~~
+Widget fpErrorWidget(BuildContext context)
+~~~
+
+#### loading 接口
+
+~~~
+Widget fpLoadingWidget(BuildContext context)
+~~~
+
+#### 使用全局配置 状态机设置
+~~~
+
+class FPThemeConifg {
+
+  static WidgetBuilder emptyConifg;
+  static WidgetBuilder errorConifg;
+  static WidgetBuilder loadingConifg;
+  
+}
+
+~~~
+
 ~~~
 
 import 'package:flutter/widgets.dart';
