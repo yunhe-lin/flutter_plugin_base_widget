@@ -1,8 +1,8 @@
 name: flutter_plugin_base_widget
 description: base widget for plugins for widgets
 version: 0.0.1
-author:
-homepage:
+author: Lin yunhe <bigmanhxx@gmail.com>
+homepage: https://github.com/yunhe-lin/flutter_plugin_base_widget.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
