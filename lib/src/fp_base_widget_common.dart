@@ -10,6 +10,8 @@ abstract class FPBaseWidgetLifecycle {
 
   double _appBarHeight;
 
+  BuildContext get buildContext => _buildContext;
+
   String getClassName() {
     if (_buildContext == null) {
       return null;
@@ -30,7 +32,7 @@ abstract class FPBaseWidgetLifecycle {
   Widget buildFP(BuildContext context) {
     if (_showAppBar != null && _showAppBar == false) {
       return new Scaffold(
-
+        body: fpBody(context),
       );
     }
     return new Scaffold(
