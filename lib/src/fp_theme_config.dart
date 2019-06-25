@@ -6,5 +6,10 @@ class FPThemeConifg {
   static WidgetBuilder emptyConifg;
   static WidgetBuilder errorConifg;
   static WidgetBuilder loadingConifg;
-  
+
+  static Image emptyImage;
+  static Image errorImage;
+  static String emptyText;
+  static String errorText;
+
 }
