@@ -36,16 +36,18 @@ abstract class FPBaseWidgetStatus {
           children: <Widget>[
             setEmptyImage() != null
                 ? setEmptyImage()
-                : new Image.asset('images/tt_refresh_loading_logo.png'),
-            new SizedBox(
-              height: 6,
-            ),
+                : new Image.asset(
+                    'images/default_empty_icon.png',
+                    width: 150,
+                    height: 150,
+                    fit: BoxFit.fill,
+                  ),
             new Text(
-              setEmptyDes() != null ? setEmptyDes() : '为啥是空的呢',
+              setEmptyDes() != null ? setEmptyDes() : '诶？当前页面没有内容哦',
               textAlign: TextAlign.center,
               style: new TextStyle(
-                  color: Color(0xff9a9ea1),
-                  fontSize: 13.5,
+                  color: Color(0xff646464),
+                  fontSize: 14,
                   fontWeight: FontWeight.normal),
             ),
           ],
@@ -77,13 +79,18 @@ abstract class FPBaseWidgetStatus {
           children: <Widget>[
             setErrorImage() != null
                 ? setErrorImage()
-                : new Image.asset('images/tt_refresh_loading_logo.png'),
+                : new Image.asset(
+                    'images/default_error_icon.png',
+                    width: 150,
+                    height: 150,
+                    fit: BoxFit.fill,
+                  ),
             new Text(
-              setErrorDes() != null ? setErrorDes() : '请哦，网络出现了一些问题',
+              setErrorDes() != null ? setErrorDes() : '啊哦，网络出现了一些问题',
               textAlign: TextAlign.center,
               style: new TextStyle(
-                  color: Color(0xff9a9ea1),
-                  fontSize: 13.5,
+                  color: Color(0xff646464),
+                  fontSize: 14,
                   fontWeight: FontWeight.normal),
             ),
             new SizedBox(
@@ -92,10 +99,10 @@ abstract class FPBaseWidgetStatus {
             new GestureDetector(
               onTap: reloadCallback,
               child: new Container(
-                height: 25,
+                height: 30,
                 width: 100,
                 decoration: new BoxDecoration(
-                  borderRadius: new BorderRadius.all(Radius.circular(10)),
+                  borderRadius: new BorderRadius.all(Radius.circular(15)),
                   border: new Border.all(color: Color(0xff969696), width: 1),
                 ),
                 child: Center(
