@@ -12,4 +12,6 @@ class FPThemeConifg {
   static String emptyText;
   static String errorText;
 
+  static Color appBarColor;
+
 }

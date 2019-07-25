@@ -3,21 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_plugin_base_widget/src/fp_base_widget_common.dart';
 import 'package:flutter_plugin_base_widget/src/fp_base_widget_status.dart';
 
-abstract class FPBaseWidget extends StatefulWidget {
-
-  FPBaseWidgetState baseWidget;
+abstract class FPBaseWidget extends StatefulWidget with FPWidgetStateInstance{
 
   @override 
   FPBaseWidgetState createState() {
-    baseWidget = getState();
+    FPBaseWidgetState baseWidget = getState();
+    setWidgetState(baseWidget);
     return baseWidget;
   }
-
   FPBaseWidgetState getState();
+
   String getStateName() {
     return baseWidget.getClassName();
   }
 
+  
+
+}
+
+abstract class FPWidgetStateInstance {
+
+  FPBaseWidgetState get baseWidget => _baseWidget;
+  FPBaseWidgetState _baseWidget;
+  
+  void setWidgetState(FPBaseWidgetState w) {
+    _baseWidget = w;
+  }
 }
 
 
@@ -28,6 +39,7 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
 
   @override 
   void initState() {
+    widget;
     initFPWdiget(context, this);
     initStatus(this, context);
     super.initState();

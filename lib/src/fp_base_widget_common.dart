@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_plugin_base_widget/src/fp_theme_config.dart';
 
 abstract class FPBaseWidgetLifecycle {
   State _baseState;
@@ -44,7 +45,12 @@ abstract class FPBaseWidgetLifecycle {
   Widget _fpAppBar(BuildContext context) {
     return PreferredSize(
       preferredSize: Size.fromHeight(_appBarHeight ?? fpAppBarHeight()),
-      child: fpAppBar(context),
+      child: new Container(
+        color: (FPThemeConifg.appBarColor) ?? Colors.white,
+        child: SafeArea(
+          child: fpAppBar(context),
+        ),
+      ),
     );
   }
 
@@ -54,8 +60,30 @@ abstract class FPBaseWidgetLifecycle {
     return 50;
   }
 
-  AppBar fpAppBar(BuildContext context) {
-    return new AppBar();
+  Widget fpAppBar(BuildContext context) {
+    return new AppBar(
+      backgroundColor: fpAppBarColor(),
+      leading: fpLeading(context),
+      title: fpTitle(context),
+      elevation: 3.0,
+      actions: fpActions(context),
+    );
+  }
+
+  Widget fpLeading(BuildContext context) {
+    return null;
+  }
+
+  Widget fpTitle(BuildContext context) {
+    return null;
+  }
+
+  List<Widget> fpActions(BuildContext context) {
+    return [];
+  }
+
+  Color fpAppBarColor() {
+    return FPThemeConifg.appBarColor ?? Colors.white;
   }
 
   Widget fpBody(BuildContext context) {
