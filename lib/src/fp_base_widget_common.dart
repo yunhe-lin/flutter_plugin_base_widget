@@ -47,10 +47,9 @@ abstract class FPBaseWidgetLifecycle {
     return PreferredSize(
       preferredSize: Size.fromHeight(_appBarHeight ?? fpAppBarHeight()),
       child: new Container(
+        padding: EdgeInsets.only(top: 0),
         color: (FPThemeConifg.appBarColor) ?? Colors.white,
-        child: SafeArea(
-          child: fpAppBar(context),
-        ),
+        child: fpAppBar(context)
       ),
     );
   }
