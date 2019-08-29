@@ -12,7 +12,8 @@ abstract class FPBaseWidgetLifecycle {
   double _appBarHeight;
 
   BuildContext get buildContext => _buildContext;
-
+  bool get appBarHidden => !_showAppBar;
+  
   String getClassName() {
     if (_buildContext == null) {
       return null;

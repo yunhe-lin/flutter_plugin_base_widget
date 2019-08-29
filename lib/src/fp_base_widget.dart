@@ -48,24 +48,27 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
   @override 
   Widget build(BuildContext context) {
     if (status == FPWidgetStatus.empty) {
-      return Scaffold(
-        appBar: fpAppBar(context),
-        body: fpEmptyWidget(context),
-      );
+      return _scaffold(fpEmptyWidget(context));
     }
     if (status == FPWidgetStatus.error) {
-      return Scaffold(
-        appBar: fpAppBar(context),
-        body: fpErrorWidget(context),
-      );
+      return _scaffold(fpErrorWidget(context));
     } 
     if (status == FPWidgetStatus.loading) {
-      return Scaffold(
-        appBar: fpAppBar(context),
-        body: fpLoadingWidget(context),
-      );
+      return _scaffold(fpLoadingWidget(context));
     }
     return buildFP(context);
+  }
+
+  Widget _scaffold(Widget body) {
+    if (appBarHidden) {
+      return Scaffold(
+        body: body,
+      );
+    }
+    return Scaffold(
+      appBar: fpAppBar(buildContext),
+      body: body,
+    );
   }
 
 }
