@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_plugin_base_widget/src/fp_base_widget_common.dart';
 import 'package:flutter_plugin_base_widget/src/fp_base_widget_status.dart';
 
@@ -35,7 +36,7 @@ abstract class FPWidgetStateInstance {
 // 状态机 部分
 // 生命周期部分
 // loaddata 部分
-abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with WidgetsBindingObserver , FPBaseWidgetLifecycle, FPBaseWidgetStatus {
+abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with WidgetsBindingObserver , FPBaseWidgetLifecycle, FPBaseWidgetStatus, AutomaticKeepAliveClientMixin {
 
   @override 
   void initState() {
@@ -44,6 +45,12 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
     initStatus(this, context);
     super.initState();
   }
+
+  @override
+  bool get wantKeepAlive => tuoWantKeepAlive;
+
+  @protected
+  bool get tuoWantKeepAlive => false;
 
   @override 
   Widget build(BuildContext context) {
