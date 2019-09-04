@@ -73,7 +73,7 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
       );
     }
     return Scaffold(
-      appBar: fpAppBar(buildContext),
+      appBar: customAppBar(buildContext),
       body: body,
     );
   }

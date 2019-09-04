@@ -70,6 +70,10 @@ abstract class FPBaseWidgetLifecycle {
     );
   }
 
+  Widget customAppBar(BuildContext context) {
+    return _fpAppBar(context);
+  }
+
   Widget fpLeading(BuildContext context) {
     return null;
   }
