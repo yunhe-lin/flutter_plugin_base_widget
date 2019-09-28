@@ -28,7 +28,6 @@ abstract class FPBaseWidgetStatus {
       return FPThemeConifg.emptyConifg(context);
     }
     return new Container(
-      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
       color: Colors.white,
       child: new Center(
         child: new Column(
@@ -107,7 +106,7 @@ abstract class FPBaseWidgetStatus {
                 ),
                 child: Center(
                   child: new Text(
-                    '重新加载',
+                    setReloadDes() ?? '重新加载',
                     textAlign: TextAlign.center,
                     style: new TextStyle(
                       color: Color(0xff969696),
@@ -132,6 +131,10 @@ abstract class FPBaseWidgetStatus {
   //子类复写此方法
   String setErrorDes() {
     return FPThemeConifg.emptyText;
+  }
+
+  String setReloadDes() {
+    return FPThemeConifg.reloadText;
   }
 
   //子类复写此方法
