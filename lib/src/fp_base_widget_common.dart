@@ -26,9 +26,16 @@ mixin FPBaseWidgetLifecycle<T extends StatefulWidget> on State<T>  {
   }
 
 
-  Widget buildFP(BuildContext context) {
-    if (_showAppBar != null && _showAppBar == false) {
+  Widget buildFP(BuildContext context, {bool useMaterApp = true}) {
+
+    if (!useMaterApp) {
       return fpBody(context);
+    }
+
+    if (_showAppBar != null && _showAppBar == false) {
+      return Scaffold(
+        body: fpBody(context),
+      );
     }
     return new Scaffold(
       appBar: _fpAppBar(context),

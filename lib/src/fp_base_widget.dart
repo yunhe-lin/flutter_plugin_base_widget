@@ -40,7 +40,7 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
     if (status == FPWidgetStatus.loading) {
       return _scaffold(fpLoadingWidget(context));
     }
-    return buildFP(context);
+    return buildFP(context, useMaterApp: useMaterial);
   }
 
   Widget _scaffold(Widget body) {
