@@ -10,6 +10,9 @@ mixin FPBaseWidgetStatus <T extends StatefulWidget> on State<T> {
 
   get status => _status;
 
+  @protected
+  bool get useMaterial => true;
+
   // public method
   setStatus(FPWidgetStatus fpstatus, {VoidCallback callback}) {
     setState(() {

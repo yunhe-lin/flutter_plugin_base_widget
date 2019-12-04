@@ -44,9 +44,17 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
   }
 
   Widget _scaffold(Widget body) {
-    if (appBarHidden) {
+
+    if (!useMaterial) {
       return body;
     }
+
+    if (appBarHidden) {
+      return Scaffold(
+        body: body,
+      );
+    }
+    
     return Scaffold(
       appBar: customAppBar(buildContext),
       body: body,
