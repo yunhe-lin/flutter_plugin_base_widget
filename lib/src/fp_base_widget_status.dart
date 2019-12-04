@@ -4,21 +4,19 @@ import 'package:flutter_plugin_base_widget/src/fp_theme_config.dart';
 
 enum FPWidgetStatus { normal, loading, error, empty }
 
-abstract class FPBaseWidgetStatus {
-  State _fpState;
+mixin FPBaseWidgetStatus <T extends StatefulWidget> on State<T> {
 
   FPWidgetStatus _status = FPWidgetStatus.normal;
 
   get status => _status;
 
-  void initStatus(State state, BuildContext context) {
-    _fpState = state;
-  }
-
   // public method
-  setStatus(FPWidgetStatus fpstatus) {
-    _fpState.setState(() {
+  setStatus(FPWidgetStatus fpstatus, {VoidCallback callback}) {
+    setState(() {
       _status = fpstatus;
+      if (callback != null) {
+        callback();
+      }
     });
   }
 

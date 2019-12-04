@@ -40,9 +40,6 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
 
   @override 
   void initState() {
-    widget;
-    initFPWdiget(context, this);
-    initStatus(this, context);
     super.initState();
   }
 
@@ -68,9 +65,7 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
 
   Widget _scaffold(Widget body) {
     if (appBarHidden) {
-      return Scaffold(
-        body: body,
-      );
+      return body;
     }
     return Scaffold(
       appBar: customAppBar(buildContext),

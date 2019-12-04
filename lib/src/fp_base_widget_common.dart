@@ -4,21 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_plugin_base_widget/src/fp_theme_config.dart';
 
-abstract class FPBaseWidgetLifecycle {
-  State _baseState;
-  BuildContext _buildContext;
+mixin FPBaseWidgetLifecycle<T extends StatefulWidget> on State<T>  {
+  
   bool _showAppBar = true;
 
   double _appBarHeight;
 
-  BuildContext get buildContext => _buildContext;
+  BuildContext get buildContext => context;
   bool get appBarHidden => !_showAppBar;
   
   String getClassName() {
-    if (_buildContext == null) {
+    if (context == null) {
       return null;
     }
-    String className = _buildContext.toString();
+    String className = context?.toString();
     if (className == null) {
       return null;
     }
@@ -26,16 +25,10 @@ abstract class FPBaseWidgetLifecycle {
     return className;
   }
 
-  void initFPWdiget(BuildContext context, State state) {
-    _baseState = state;
-    _buildContext = context;
-  }
 
   Widget buildFP(BuildContext context) {
     if (_showAppBar != null && _showAppBar == false) {
-      return new Scaffold(
-        body: fpBody(context),
-      );
+      return fpBody(context);
     }
     return new Scaffold(
       appBar: _fpAppBar(context),
@@ -96,14 +89,14 @@ abstract class FPBaseWidgetLifecycle {
 
   // public set method
   void setAppBar({bool hidden}) {
-    _baseState.setState((){
+    setState(() {
       _showAppBar = !hidden;
     });
   }
 
   void setAppBarHeight(double height) {
     assert(height > 0);
-    _baseState.setState((){
+    setState(() {
       _appBarHeight = height;
     });
   }
