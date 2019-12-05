@@ -23,6 +23,13 @@ mixin FPBaseWidgetStatus <T extends StatefulWidget> on State<T> {
     });
   }
 
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   // override method
   Widget fpEmptyWidget(BuildContext context) {
     if (FPThemeConifg.emptyConifg != null) {
