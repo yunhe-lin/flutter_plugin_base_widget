@@ -31,6 +31,7 @@ abstract class FPBaseWidgetState<T extends FPBaseWidget> extends State<T> with W
 
   @override 
   Widget build(BuildContext context) {
+    super.build(context);
     if (status == FPWidgetStatus.empty) {
       return _scaffold(fpEmptyWidget(context));
     }
