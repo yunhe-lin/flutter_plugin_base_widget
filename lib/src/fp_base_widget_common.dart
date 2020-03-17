@@ -11,7 +11,7 @@ mixin FPBaseWidgetLifecycle<T extends StatefulWidget> on State<T>  {
   double _appBarHeight;
 
   BuildContext get buildContext => context;
-  bool get appBarHidden => !_showAppBar;
+  bool get appBarHidden => !(_showAppBar ?? false);
   
   String getClassName() {
     if (context == null) {
@@ -32,7 +32,7 @@ mixin FPBaseWidgetLifecycle<T extends StatefulWidget> on State<T>  {
       return fpBody(context);
     }
 
-    if (_showAppBar != null && _showAppBar == false) {
+    if (appBarHidden) {
       return Scaffold(
         body: fpBody(context),
       );
