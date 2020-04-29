@@ -4,6 +4,9 @@ import 'package:flutter_plugin_base_widget/src/fp_base_widget_common.dart';
 import 'package:flutter_plugin_base_widget/src/fp_base_widget_status.dart';
 
 abstract class FPBaseWidget extends StatefulWidget{
+
+  FPBaseWidget({Key key}) : super(key: key);
+
   @override 
   FPBaseWidgetState createState() {
     FPBaseWidgetState baseWidget = getState();

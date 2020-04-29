@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_plugin_base_widget/flutter_plugin_base_widget.dart';
 import 'package:flutter_plugin_base_widget/src/fp_theme_config.dart';
 
 mixin FPBaseWidgetLifecycle<T extends StatefulWidget> on State<T>  {
@@ -45,11 +46,15 @@ mixin FPBaseWidgetLifecycle<T extends StatefulWidget> on State<T>  {
 
   Widget _fpAppBar(BuildContext context) {
     return PreferredSize(
-      preferredSize: Size.fromHeight(_appBarHeight ?? fpAppBarHeight()),
+      preferredSize: Size.fromHeight((_appBarHeight ?? fpAppBarHeight())),
       child: new Container(
-        padding: EdgeInsets.only(top: 0),
-        color: (FPThemeConifg.appBarColor) ?? Colors.white,
-        child: fpAppBar(context)
+        color: fpAppBarColor(),
+        child: Container(
+          height: (_appBarHeight ?? fpAppBarHeight()) + MediaQuery.of(context).padding.top,
+          margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          color: fpAppBarColor(),
+          child: fpAppBar(context),
+        )
       ),
     );
   }
@@ -57,11 +62,11 @@ mixin FPBaseWidgetLifecycle<T extends StatefulWidget> on State<T>  {
   // override method
 
   double fpAppBarHeight() {
-    return 50;
+    return 44;
   }
 
   Widget fpAppBar(BuildContext context) {
-    return new AppBar(
+    return AppBar(
       backgroundColor: fpAppBarColor(),
       leading: fpLeading(context),
       title: fpTitle(context),
